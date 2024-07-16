@@ -1,0 +1,593 @@
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+	<Id>83234901-C298-4436-AD94-06202D98BC35</Id>
+	<Version>24.02.0.0</Version>
+	<ProviderName>Oracle</ProviderName>
+	<DefaultLocale>en-US</DefaultLocale>
+	<DisplayName DefaultValue="Smart View" />
+	<Description DefaultValue="Oracle Smart View for Office 365 for Web and Office for Mac" />
+	<IconUrl DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/logo.png" />
+	<AppDomains>
+	   <AppDomain>https://login.oci.oraclecloud.com</AppDomain>
+	   <AppDomain>https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com</AppDomain>
+	   <AppDomain>https://idcs-dcdeb00d1c4f4b4b9974440677815e0c.identity.oraclecloud.com</AppDomain>
+	</AppDomains>
+	<Hosts>
+	   <Host Name="Workbook" />
+	</Hosts>
+	<Requirements>
+	   <Sets DefaultMinVersion="1.1">
+		 <Set Name="CustomFunctionsRuntime" MinVersion="1.1"/>
+		 <Set Name="SharedRuntime" MinVersion="1.1"/>
+	</Sets>
+	</Requirements>
+	<DefaultSettings>
+	   <SourceLocation DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Repository-365.svp?mfest_version=3.0&amp;adminExt=1&amp;addBook=1">
+		    <Override Locale="en-US" Value="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Repository-365-en-US.svp?mfest_version=3.0&amp;adminExt=1&amp;addBook=1" />
+	   </SourceLocation>
+	</DefaultSettings>
+	<Permissions>ReadWriteDocument</Permissions>
+	<VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+	<Description resid="residVersionOverridesTT" />
+	<Hosts>
+	   <Host xsi:type="Workbook">
+	      <Runtimes>
+	          <Runtime resid="residUnitConverterUrl" lifetime="long" />
+	      </Runtimes>
+	      <AllFormFactors>
+	        <ExtensionPoint xsi:type="CustomFunctions">
+	           <Script>
+	               <SourceLocation resid="JS-URL" />
+	           </Script>
+	           <Page>
+	               <SourceLocation resid="residUnitConverterUrl"/>
+	           </Page>
+	           <Metadata>
+	               <SourceLocation resid="JSON-URL" />
+	           </Metadata>
+	           <Namespace resid="namespace" />
+	         </ExtensionPoint>
+	       </AllFormFactors>
+	       <DesktopFormFactor>
+	           <FunctionFile resid="residUnitConverterUrl" />
+	           <ExtensionPoint xsi:type="PrimaryCommandSurface">
+	               <CustomTab id="SmartViewAddIns">
+	<Group id="SmartView.GroupIDStart">
+	   <Label resid="residGroupLabelStart" />
+	   <Icon>
+	   <bt:Image size="16" resid="icon_smartview_panel_16" />
+	   <bt:Image size="32" resid="icon_smartview_panel_32" />
+	   <bt:Image size="80" resid="icon_smartview_panel_80" />
+	</Icon>
+	<Control xsi:type="Button" id="SmartView.ButtonHome">
+		 <Label resid="residLabelHome" />
+			<Supertip>
+		 <Title resid="residHomeTT" />
+		 <Description resid="residHomeTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_smartview_panel_16" />
+	   <bt:Image size="32" resid="icon_smartview_panel_32" />
+	   <bt:Image size="80" resid="icon_smartview_panel_80" />
+	</Icon>
+	<Action xsi:type="ShowTaskpane">
+		<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
+		<SourceLocation resid="residUnitConverterUrl" />
+	</Action>
+	</Control>
+	</Group>
+	<Group id="SmartView.GroupIDEdit">
+	   <Label resid="residGroupLabelEdit" />
+	   <Icon>
+	   <bt:Image size="16" resid="icon_smartview_panel_16" />
+	   <bt:Image size="32" resid="icon_smartview_panel_32" />
+	   <bt:Image size="80" resid="icon_smartview_panel_80" />
+	</Icon>
+	<Control xsi:type="Button" id="SmartView.ButtonUndo">
+		 <Label resid="residLabelUndo" />
+			<Supertip>
+		 <Title resid="residUndoTT" />
+		 <Description resid="residUndoTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_undo_16" />
+	   <bt:Image size="32" resid="icon_undo_32" />
+	   <bt:Image size="80" resid="icon_undo_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>Undo</FunctionName>
+	</Action>
+	<Enabled>false</Enabled>
+	</Control>
+	<Control xsi:type="Button" id="SmartView.ButtonRedo">
+		 <Label resid="residLabelRedo" />
+			<Supertip>
+		 <Title resid="residRedoTT" />
+		 <Description resid="residRedoTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_redo_16" />
+	   <bt:Image size="32" resid="icon_redo_32" />
+	   <bt:Image size="80" resid="icon_redo_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>Redo</FunctionName>
+	</Action>
+	<Enabled>false</Enabled>
+	</Control>
+	<Control xsi:type="Menu" id="SmartView.MenuFunctions">
+	<Label resid="residLabelFunctions" />
+			<Supertip>
+		 <Title resid="residFunctionsTT" />
+		 <Description resid="residFunctionsTTDesc" />
+	</Supertip>
+	<Icon>
+	   <bt:Image size="16" resid="icon_functions_16" />
+	   <bt:Image size="32" resid="icon_functions_32" />
+	   <bt:Image size="80" resid="icon_functions_80" />
+	</Icon>
+	 <Items>
+	<Item id="SmartView.MenuFunctions.BuildFunction">
+		<Label resid="residLabelBuildFunction" />
+			<Supertip>
+		 <Title resid="residBuildFunctionTT" />
+		 <Description resid="residBuildFunctionTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_function_builder_16" />
+	   <bt:Image size="32" resid="icon_function_builder_32" />
+	   <bt:Image size="80" resid="icon_function_builder_80" />
+	</Icon>
+	<Action xsi:type="ShowTaskpane">
+		<SourceLocation  resid="residBuildFunctionUrl"/>
+	</Action>
+	</Item>
+	<Item id="SmartView.MenuFunctions.FixLinks">
+		<Label resid="residLabelFixLinks" />
+			<Supertip>
+		 <Title resid="residFixLinksTT" />
+		 <Description resid="residFixLinksTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_FUNCTION_LINKS_16" />
+	   <bt:Image size="32" resid="icon_FUNCTION_LINKS_32" />
+	   <bt:Image size="80" resid="icon_FUNCTION_LINKS_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>FixUDF</FunctionName>
+	</Action>
+	</Item>
+		</Items>
+	</Control>
+	</Group>
+	<Group id="SmartView.GroupIDData">
+	   <Label resid="residGroupLabelData" />
+	   <Icon>
+	   <bt:Image size="16" resid="icon_smartview_panel_16" />
+	   <bt:Image size="32" resid="icon_smartview_panel_32" />
+	   <bt:Image size="80" resid="icon_smartview_panel_80" />
+	</Icon>
+	<Control xsi:type="Button" id="SmartView.ButtonRefresh">
+		 <Label resid="residLabelRefresh" />
+			<Supertip>
+		 <Title resid="residRefreshTT" />
+		 <Description resid="residRefreshTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_refresh_16" />
+	   <bt:Image size="32" resid="icon_refresh_32" />
+	   <bt:Image size="80" resid="icon_refresh_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>Refresh</FunctionName>
+	</Action>
+	</Control>
+	<Control xsi:type="Button" id="SmartView.ButtonSubmitData">
+		 <Label resid="residLabelSubmitData" />
+			<Supertip>
+		 <Title resid="residSubmitDataTT" />
+		 <Description resid="residSubmitDataTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_submit_16" />
+	   <bt:Image size="32" resid="icon_submit_32" />
+	   <bt:Image size="80" resid="icon_submit_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>Submit</FunctionName>
+	</Action>
+	</Control>
+	</Group>
+	<Group id="SmartView.GroupIDGeneral">
+	   <Label resid="residGroupLabelGeneral" />
+	   <Icon>
+	   <bt:Image size="16" resid="icon_smartview_panel_16" />
+	   <bt:Image size="32" resid="icon_smartview_panel_32" />
+	   <bt:Image size="80" resid="icon_smartview_panel_80" />
+	</Icon>
+	<Control xsi:type="Button" id="SmartView.ButtonOptions">
+		 <Label resid="residLabelOptions" />
+			<Supertip>
+		 <Title resid="residOptionsTT" />
+		 <Description resid="residOptionsTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_options_16" />
+	   <bt:Image size="32" resid="icon_options_32" />
+	   <bt:Image size="80" resid="icon_options_80" />
+	</Icon>
+	<Action xsi:type="ShowTaskpane">
+		<SourceLocation resid="residOptionsUrl" />
+	</Action>
+	</Control>
+	<Control xsi:type="Button" id="SmartView.ButtonSheetInfo">
+		 <Label resid="residLabelSheetInfo" />
+			<Supertip>
+		 <Title resid="residSheetInfoTT" />
+		 <Description resid="residSheetInfoTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_Formating_16" />
+	   <bt:Image size="32" resid="icon_Formating_32" />
+	   <bt:Image size="80" resid="icon_Formating_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>SheetInformaion</FunctionName>
+	</Action>
+	</Control>
+	<Control xsi:type="Menu" id="SmartView.MenuMore">
+	<Label resid="residLabelMore" />
+			<Supertip>
+		 <Title resid="residMoreTT" />
+		 <Description resid="residMoreTTDesc" />
+	</Supertip>
+	<Icon>
+	   <bt:Image size="16" resid="icon_more_16" />
+	   <bt:Image size="32" resid="icon_more_32" />
+	   <bt:Image size="80" resid="icon_more_80" />
+	</Icon>
+	 <Items>
+	<Item id="SmartView.MenuMore.ImportMetadata">
+		<Label resid="residLabelImportMetadata" />
+			<Supertip>
+		 <Title resid="residImportMetadataTT" />
+		 <Description resid="residImportMetadataTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_Import_Metadata_16" />
+	   <bt:Image size="32" resid="icon_Import_Metadata_32" />
+	   <bt:Image size="80" resid="icon_Import_Metadata_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>importMetadata</FunctionName>
+	</Action>
+	</Item>
+		</Items>
+	</Control>
+	<Control xsi:type="Menu" id="SmartView.MenuHelp">
+	<Label resid="residLabelHelp" />
+			<Supertip>
+		 <Title resid="residHelpTT" />
+		 <Description resid="residHelpTTDesc" />
+	</Supertip>
+	<Icon>
+	   <bt:Image size="16" resid="icon_help_16" />
+	   <bt:Image size="32" resid="icon_help_32" />
+	   <bt:Image size="80" resid="icon_help_80" />
+	</Icon>
+	 <Items>
+	<Item id="SmartView.MenuHelp.Contents">
+		<Label resid="residLabelContents" />
+			<Supertip>
+		 <Title resid="residContentsTT" />
+		 <Description resid="residContentsTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_help_16" />
+	   <bt:Image size="32" resid="icon_help_32" />
+	   <bt:Image size="80" resid="icon_help_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>SvOnlineHelp</FunctionName>
+	</Action>
+	</Item>
+	<Item id="SmartView.MenuHelp.TechnicalSupport">
+		<Label resid="residLabelTechnicalSupport" />
+			<Supertip>
+		 <Title resid="residTechnicalSupportTT" />
+		 <Description resid="residTechnicalSupportTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_technical_support_16" />
+	   <bt:Image size="32" resid="icon_technical_support_32" />
+	   <bt:Image size="80" resid="icon_technical_support_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>TechnicalSupport</FunctionName>
+	</Action>
+	</Item>
+	<Item id="SmartView.MenuHelp.Documentation">
+		<Label resid="residLabelDocumentation" />
+			<Supertip>
+		 <Title resid="residDocumentationTT" />
+		 <Description resid="residDocumentationTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_EPM_documentation_16" />
+	   <bt:Image size="32" resid="icon_EPM_documentation_32" />
+	   <bt:Image size="80" resid="icon_EPM_documentation_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>Documentation</FunctionName>
+	</Action>
+	</Item>
+	<Item id="SmartView.MenuHelp.About">
+		<Label resid="residLabelAbout" />
+			<Supertip>
+		 <Title resid="residAboutTT" />
+		 <Description resid="residAboutTTDesc" />
+	</Supertip>
+		<Icon>
+	   <bt:Image size="16" resid="icon_about_16" />
+	   <bt:Image size="32" resid="icon_about_32" />
+	   <bt:Image size="80" resid="icon_about_80" />
+	</Icon>
+	<Action xsi:type="ExecuteFunction">
+		<FunctionName>DisplayAbout</FunctionName>
+	</Action>
+	</Item>
+		</Items>
+	</Control>
+	</Group>
+	       <Label resid="residSmartViewRibbonTabLabel" />
+	       </CustomTab>
+	       </ExtensionPoint>
+	       	   </DesktopFormFactor>
+	   </Host>
+	</Hosts>
+	<Resources>
+	<bt:Images>
+		<bt:Image id="icon_smartview_panel_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/smartview_panel_32.png"></bt:Image>
+		<bt:Image id="icon_smartview_panel_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/smartview_panel_32.png"></bt:Image>
+		<bt:Image id="icon_smartview_panel_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/smartview_panel_80.png"></bt:Image>
+		<bt:Image id="icon_undo_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/undo.png"></bt:Image>
+		<bt:Image id="icon_undo_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/undo_32.png"></bt:Image>
+		<bt:Image id="icon_undo_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/undo_80.png"></bt:Image>
+		<bt:Image id="icon_redo_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/redo.png"></bt:Image>
+		<bt:Image id="icon_redo_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/redo_32.png"></bt:Image>
+		<bt:Image id="icon_redo_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/redo_80.png"></bt:Image>
+		<bt:Image id="icon_functions_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/functions_16.png"></bt:Image>
+		<bt:Image id="icon_functions_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/functions_16.png"></bt:Image>
+		<bt:Image id="icon_functions_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/functions_16.png"></bt:Image>
+		<bt:Image id="icon_function_builder_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/function_builder.png"></bt:Image>
+		<bt:Image id="icon_function_builder_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/function_builder_32.png"></bt:Image>
+		<bt:Image id="icon_function_builder_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/function_builder_32.png"></bt:Image>
+		<bt:Image id="icon_FUNCTION_LINKS_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/FUNCTION_LINKS.png"></bt:Image>
+		<bt:Image id="icon_FUNCTION_LINKS_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/FUNCTION_LINKS_32.png"></bt:Image>
+		<bt:Image id="icon_FUNCTION_LINKS_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/FUNCTION_LINKS_80.png"></bt:Image>
+		<bt:Image id="icon_refresh_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/refresh.png"></bt:Image>
+		<bt:Image id="icon_refresh_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/refresh_32.png"></bt:Image>
+		<bt:Image id="icon_refresh_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/refresh_80.png"></bt:Image>
+		<bt:Image id="icon_submit_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/submit_16.png"></bt:Image>
+		<bt:Image id="icon_submit_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/submit_32.png"></bt:Image>
+		<bt:Image id="icon_submit_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/submit_80.png"></bt:Image>
+		<bt:Image id="icon_options_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/options.png"></bt:Image>
+		<bt:Image id="icon_options_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/options_32.png"></bt:Image>
+		<bt:Image id="icon_options_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/options_80.png"></bt:Image>
+		<bt:Image id="icon_Formating_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/Formating.png"></bt:Image>
+		<bt:Image id="icon_Formating_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/Formating_32.png"></bt:Image>
+		<bt:Image id="icon_Formating_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/Formating_80.png"></bt:Image>
+		<bt:Image id="icon_more_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/more.png"></bt:Image>
+		<bt:Image id="icon_more_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/more_32.png"></bt:Image>
+		<bt:Image id="icon_more_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/more_80.png"></bt:Image>
+		<bt:Image id="icon_Import_Metadata_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/Import_Metadata.png"></bt:Image>
+		<bt:Image id="icon_Import_Metadata_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/Import_Metadata_32.png"></bt:Image>
+		<bt:Image id="icon_Import_Metadata_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/Import_Metadata_32.png"></bt:Image>
+		<bt:Image id="icon_help_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/help.png"></bt:Image>
+		<bt:Image id="icon_help_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/help_32.png"></bt:Image>
+		<bt:Image id="icon_help_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/help_32.png"></bt:Image>
+		<bt:Image id="icon_technical_support_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/technical_support.png"></bt:Image>
+		<bt:Image id="icon_technical_support_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/technical_support_32.png"></bt:Image>
+		<bt:Image id="icon_technical_support_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/technical_support_32.png"></bt:Image>
+		<bt:Image id="icon_EPM_documentation_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/EPM_documentation.png"></bt:Image>
+		<bt:Image id="icon_EPM_documentation_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/EPM_documentation_32.png"></bt:Image>
+		<bt:Image id="icon_EPM_documentation_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/EPM_documentation_32.png"></bt:Image>
+		<bt:Image id="icon_about_16" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/about.png"></bt:Image>
+		<bt:Image id="icon_about_32" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/about_32.png"></bt:Image>
+		<bt:Image id="icon_about_80" DefaultValue="https://static.oracle.com/cdn/smartview/1.0/images/about_32.png"></bt:Image>
+	</bt:Images>
+	<bt:Urls>
+		<bt:Url id="residDesktopFuncUrl" DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Repository-365.svp">
+		    <bt:Override Locale="en-US" Value="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Repository-365-en-US.svp" />
+		</bt:Url>
+		<bt:Url id="residDesktopCommnadUrl" DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/commands.html">
+		    <bt:Override Locale="en-US" Value="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/commands.html?locale=en-US" />
+		</bt:Url>
+        <bt:Url id="JSON-URL" DefaultValue="https://static.oracle.com/cdn/smartview/udfs-preview/1.0.0.5/customfunctions.json"></bt:Url>
+        <bt:Url id="JS-URL" DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/js/udfs/customfunctions.js"></bt:Url>
+		<bt:Url id="residUnitConverterUrl" DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Repository-365.svp?mfest_version=3.0&amp;adminExt=1&amp;addBook=1">
+		    <bt:Override Locale="en-US" Value="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Repository-365-en-US.svp?mfest_version=3.0&amp;adminExt=1&amp;addBook=1" />
+		</bt:Url>
+		<bt:Url id="residBuildFunctionUrl" DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/FunctionBuilder-365.svp">
+		    <bt:Override Locale="en-US" Value="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/FunctionBuilder-365-en-US.svp" />
+		</bt:Url>
+		<bt:Url id="residOptionsUrl" DefaultValue="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Options-365.svp?func=1">
+		    <bt:Override Locale="en-US" Value="https://epmdc-vaynerxepm.epm.ca-montreal-1.ocs.oraclecloud.com/HyperionPlanning/Options-365-en-US.svp?func=1" />
+		</bt:Url>
+	</bt:Urls>
+	<bt:ShortStrings>
+	<bt:String id="residGroupLabelStart" DefaultValue="Start">
+	    <bt:Override Locale="en-US" Value="Start" />
+	</bt:String>
+	<bt:String id="residLabelHome" DefaultValue="Home">
+	    <bt:Override Locale="en-US" Value="Home" />
+	</bt:String>
+	<bt:String id="residGroupLabelEdit" DefaultValue="Edit">
+	    <bt:Override Locale="en-US" Value="Edit" />
+	</bt:String>
+	<bt:String id="residLabelUndo" DefaultValue="Undo">
+	    <bt:Override Locale="en-US" Value="Undo" />
+	</bt:String>
+	<bt:String id="residLabelRedo" DefaultValue="Redo">
+	    <bt:Override Locale="en-US" Value="Redo" />
+	</bt:String>
+	<bt:String id="residLabelFunctions" DefaultValue="Functions">
+	    <bt:Override Locale="en-US" Value="Functions" />
+	</bt:String>
+	<bt:String id="residLabelBuildFunction" DefaultValue="Build Function">
+	    <bt:Override Locale="en-US" Value="Build Function" />
+	</bt:String>
+	<bt:String id="residLabelFixLinks" DefaultValue="Fix Links">
+	    <bt:Override Locale="en-US" Value="Fix Links" />
+	</bt:String>
+	<bt:String id="residGroupLabelData" DefaultValue="Data">
+	    <bt:Override Locale="en-US" Value="Data" />
+	</bt:String>
+	<bt:String id="residLabelRefresh" DefaultValue="Refresh">
+	    <bt:Override Locale="en-US" Value="Refresh" />
+	</bt:String>
+	<bt:String id="residLabelSubmitData" DefaultValue="Submit Data">
+	    <bt:Override Locale="en-US" Value="Submit Data" />
+	</bt:String>
+	<bt:String id="residGroupLabelGeneral" DefaultValue="General">
+	    <bt:Override Locale="en-US" Value="General" />
+	</bt:String>
+	<bt:String id="residLabelOptions" DefaultValue="Options">
+	    <bt:Override Locale="en-US" Value="Options" />
+	</bt:String>
+	<bt:String id="residLabelSheetInfo" DefaultValue="Sheet Info">
+	    <bt:Override Locale="en-US" Value="Sheet Info" />
+	</bt:String>
+	<bt:String id="residLabelMore" DefaultValue="More">
+	    <bt:Override Locale="en-US" Value="More" />
+	</bt:String>
+	<bt:String id="residLabelImportMetadata" DefaultValue="Import Metadata">
+	    <bt:Override Locale="en-US" Value="Import Metadata" />
+	</bt:String>
+	<bt:String id="residLabelHelp" DefaultValue="Help">
+	    <bt:Override Locale="en-US" Value="Help" />
+	</bt:String>
+	<bt:String id="residLabelContents" DefaultValue="Contents">
+	    <bt:Override Locale="en-US" Value="Contents" />
+	</bt:String>
+	<bt:String id="residLabelTechnicalSupport" DefaultValue="Technical Support">
+	    <bt:Override Locale="en-US" Value="Technical Support" />
+	</bt:String>
+	<bt:String id="residLabelDocumentation" DefaultValue="Documentation">
+	    <bt:Override Locale="en-US" Value="Documentation" />
+	</bt:String>
+	<bt:String id="residLabelAbout" DefaultValue="About">
+	    <bt:Override Locale="en-US" Value="About" />
+	</bt:String>
+	<bt:String id="residSmartViewRibbonTabLabel" DefaultValue="Smart View">
+	</bt:String>
+	<bt:String id="residHomeTT" DefaultValue="Home">
+	    <bt:Override Locale="en-US" Value="Home" />
+	</bt:String>
+	<bt:String id="residUndoTT" DefaultValue="Undo">
+	    <bt:Override Locale="en-US" Value="Undo" />
+	</bt:String>
+	<bt:String id="residRedoTT" DefaultValue="Redo">
+	    <bt:Override Locale="en-US" Value="Redo" />
+	</bt:String>
+	<bt:String id="residFunctionsTT" DefaultValue="Functions">
+	    <bt:Override Locale="en-US" Value="Functions" />
+	</bt:String>
+	<bt:String id="residBuildFunctionTT" DefaultValue="Build Function">
+	    <bt:Override Locale="en-US" Value="Build Function" />
+	</bt:String>
+	<bt:String id="residFixLinksTT" DefaultValue="Fix Links">
+	    <bt:Override Locale="en-US" Value="Fix Links" />
+	</bt:String>
+	<bt:String id="residRefreshTT" DefaultValue="Refresh">
+	    <bt:Override Locale="en-US" Value="Refresh" />
+	</bt:String>
+	<bt:String id="residSubmitDataTT" DefaultValue="Submit Data">
+	    <bt:Override Locale="en-US" Value="Submit Data" />
+	</bt:String>
+	<bt:String id="residOptionsTT" DefaultValue="Options">
+	    <bt:Override Locale="en-US" Value="Options" />
+	</bt:String>
+	<bt:String id="residSheetInfoTT" DefaultValue="Sheet Info">
+	    <bt:Override Locale="en-US" Value="Sheet Info" />
+	</bt:String>
+	<bt:String id="residMoreTT" DefaultValue="More">
+	    <bt:Override Locale="en-US" Value="More" />
+	</bt:String>
+	<bt:String id="residImportMetadataTT" DefaultValue="Import Metadata">
+	    <bt:Override Locale="en-US" Value="Import Metadata" />
+	</bt:String>
+	<bt:String id="residHelpTT" DefaultValue="Help">
+	    <bt:Override Locale="en-US" Value="Help" />
+	</bt:String>
+	<bt:String id="residContentsTT" DefaultValue="Contents">
+	    <bt:Override Locale="en-US" Value="Contents" />
+	</bt:String>
+	<bt:String id="residTechnicalSupportTT" DefaultValue="Technical Support">
+	    <bt:Override Locale="en-US" Value="Technical Support" />
+	</bt:String>
+	<bt:String id="residDocumentationTT" DefaultValue="Documentation">
+	    <bt:Override Locale="en-US" Value="Documentation" />
+	</bt:String>
+	<bt:String id="residAboutTT" DefaultValue="About">
+	    <bt:Override Locale="en-US" Value="About" />
+	</bt:String>
+	</bt:ShortStrings>
+	<bt:LongStrings>
+	<bt:String id="residVersionOverridesTT" DefaultValue="Smart View Addin for Office 365">
+	    <bt:Override Locale="en-US" Value="Smart View Addin for Office 365" />
+	</bt:String >
+	<bt:String id="residHomeTTDesc" DefaultValue="Access and manage connections.">
+	    <bt:Override Locale="en-US" Value="Access and manage connections." />
+	</bt:String>
+	<bt:String id="residUndoTTDesc" DefaultValue="Undo the previous ad hoc operation.">
+	    <bt:Override Locale="en-US" Value="Undo the previous ad hoc operation." />
+	</bt:String>
+	<bt:String id="residRedoTTDesc" DefaultValue="Redo the previous ad hoc operation.">
+	    <bt:Override Locale="en-US" Value="Redo the previous ad hoc operation." />
+	</bt:String>
+	<bt:String id="residFunctionsTTDesc" DefaultValue="Functions">
+	    <bt:Override Locale="en-US" Value="Functions" />
+	</bt:String>
+	<bt:String id="residBuildFunctionTTDesc" DefaultValue="Create functions to retrieve and submit data, and display information for the POV.">
+	    <bt:Override Locale="en-US" Value="Create functions to retrieve and submit data, and display information for the POV." />
+	</bt:String>
+	<bt:String id="residFixLinksTTDesc" DefaultValue="Fix Links.">
+	    <bt:Override Locale="en-US" Value="Fix Links." />
+	</bt:String>
+	<bt:String id="residRefreshTTDesc" DefaultValue="Refresh the data on the current worksheet.">
+	    <bt:Override Locale="en-US" Value="Refresh the data on the current worksheet." />
+	</bt:String>
+	<bt:String id="residSubmitDataTTDesc" DefaultValue="Save data updates in the worksheet to the data source.">
+	    <bt:Override Locale="en-US" Value="Save data updates in the worksheet to the data source." />
+	</bt:String>
+	<bt:String id="residOptionsTTDesc" DefaultValue="Set a variety of options for working with Smart View">
+	    <bt:Override Locale="en-US" Value="Set a variety of options for working with Smart View" />
+	</bt:String>
+	<bt:String id="residSheetInfoTTDesc" DefaultValue="Display general and connection information for the worksheet.">
+	    <bt:Override Locale="en-US" Value="Display general and connection information for the worksheet." />
+	</bt:String>
+	<bt:String id="residMoreTTDesc" DefaultValue="More.">
+	    <bt:Override Locale="en-US" Value="More." />
+	</bt:String>
+	<bt:String id="residImportMetadataTTDesc" DefaultValue="Copy metadata from the grid on another worksheet to the current worksheet.">
+	    <bt:Override Locale="en-US" Value="Copy metadata from the grid on another worksheet to the current worksheet." />
+	</bt:String>
+	<bt:String id="residHelpTTDesc" DefaultValue="Open the Smart View online help.">
+	    <bt:Override Locale="en-US" Value="Open the Smart View online help." />
+	</bt:String>
+	<bt:String id="residContentsTTDesc" DefaultValue="Open the Smart View online help.">
+	    <bt:Override Locale="en-US" Value="Open the Smart View online help." />
+	</bt:String>
+	<bt:String id="residTechnicalSupportTTDesc" DefaultValue="Open Technical Support URL.">
+	    <bt:Override Locale="en-US" Value="Open Technical Support URL." />
+	</bt:String>
+	<bt:String id="residDocumentationTTDesc" DefaultValue="Open Documentation URL.">
+	    <bt:Override Locale="en-US" Value="Open Documentation URL." />
+	</bt:String>
+	<bt:String id="residAboutTTDesc" DefaultValue="View Version and Copyright information">
+	    <bt:Override Locale="en-US" Value="View Version and Copyright information" />
+	</bt:String>
+	</bt:LongStrings>
+	</Resources>
+	</VersionOverrides>
+</OfficeApp>
